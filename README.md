@@ -3,7 +3,7 @@
 Welcome to Motogram!
 
 <p align="center">
-  <img src="https://github.com/bcncalling/motogram/blob/main/assets/motogram.png" alt="Motogram Logo" width="150">
+  <img src="assets/motogram.png" alt="Motogram Logo" width="150">
 </p>
 
 ## Contributing
