@@ -43,7 +43,7 @@ class MotoClient:
 
     Parameters:
         name (``str``):
-            A name for the client, e.g.: "my_bot".
+            A name for the client, e.g.: "bot".
 
         api_id (``int`` | ``str``, *optional*):
             The *api_id* part of the Telegram API key, as integer or string.
@@ -64,7 +64,7 @@ class MotoClient:
         in_memory (``bool``, *optional*):
             Pass True to start an in-memory session that will be discarded as soon as the client stops.
             In order to reconnect again using an in-memory session without having to log in again, you can use
-            :meth:`~pyrogram.Client.export_session_string` before stopping the client to get a session string you can
+            :meth:`~mototgram.Client.client.export_session_string` before stopping the client to get a session string you can
             pass to the ``session_string`` parameter.
             Defaults to False.
 
@@ -100,33 +100,22 @@ class MotoClient:
         self.phone_code = phone_code
         self.password = password
         self.plugins = custom_plugins
-
         if self.session_string:
             self.storage = MemoryStorage(self.name, self.session_string)
         elif self.in_memory:
             self.storage = MemoryStorage(self.name)
         else:
-            self.storage = FileStorage(self.name)
-            
+            self.storage = FileStorage(self.name)         
         self.dispatcher = Dispatcher(self)
-
         self.rnd_id = MsgId
-
         self.session = None
-
         self.media_sessions = {}
         self.media_sessions_lock = asyncio.Lock()
-
         self.save_file_semaphore = asyncio.Semaphore(self.max_concurrent_transmissions)
         self.get_file_semaphore = asyncio.Semaphore(self.max_concurrent_transmissions)
-
         self.is_connected = None
         self.is_initialized = None
-
         self.takeout_id = None
-
         self.disconnect_handler = None
-
         self.me: Optional[User] = None
-
         self.message_cache = Cache(10000)
