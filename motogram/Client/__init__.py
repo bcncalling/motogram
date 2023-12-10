@@ -1,1 +1,1 @@
-from ..client import MotoClient
+from .Client.client import MotoClient
