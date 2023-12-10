@@ -1,8 +1,9 @@
-#pyrogrm base
-#motogram
+# pyrogrm base
+# motogram
 
 import motogram
 from motogram.wrongs import BadRequest, SessionPasswordNeeded
+from motogram.types import User  # Make sure to import the necessary class
 
 async def authorize(mtclient):
     if mtclient.bot_token:
