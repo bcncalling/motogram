@@ -33,7 +33,7 @@ from io import StringIO, BytesIO
 from mimetypes import MimeTypes
 from pathlib import Path
 from typing import Union, List, Optional, Callable, AsyncGenerator
-from motogram.strings import Session, Auth
+from motogram.strings import Session
 from motogram.store import MemoryStorage, FileStorage
 from .dispatcher import Dispatcher
 from motogram.types import User, TermsOfService
