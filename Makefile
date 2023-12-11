@@ -1,7 +1,5 @@
 clean-api:
-	$(RM) motogram/errors/exceptions motogram/raw/all.py motogram/raw/base motogram/raw/functions motogram/raw/types
-	# Replace "pyrogram" with "motogram" in the next line
-	#motogram to motogram errors to wrongs
+	$(RM) motogram/wrongs/exceptions motogram/raw/all.py motogram/raw/base motogram/raw/functions motogram/raw/types
 
 VENV := venv
 PYTHON := $(VENV)/bin/python
