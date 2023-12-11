@@ -1,1 +1,13 @@
+# Include
+include README.md
+include LICENSE
+include requirements.txt
+recursive-include tests *.py
+
+# Exclude
+prune motogram/wrongs/exceptions
+prune motogram/raw/functions
+prune motogram/raw/types
+prune motogram/raw/base
+exclude motogram/raw/all.py
 
