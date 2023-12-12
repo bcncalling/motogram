@@ -76,15 +76,15 @@ class MotoClient(Methods):
             Pass the Bot API token to create a bot session, e.g.: "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
             Only applicable for new sessions.
 
-        session_string (``str``, *optional*):
-            Pass a session string to load the session in-memory.
+        session (``str``, *optional*):
+            Pass a session to load the session in-memory.
             Implies ``in_memory=True``.
 
         in_memory (``bool``, *optional*):
             Pass True to start an in-memory session that will be discarded as soon as the client stops.
             In order to reconnect again using an in-memory session without having to log in again, you can use
-            :meth:`~mototgram.Client.client.export_session_string` before stopping the client to get a session string you can
-            pass to the ``session_string`` parameter.
+            :meth:`~mototgram.MotoClient.mtclient.save_session` before stopping the client to get a session string you can
+            pass to the ``session`` parameter.
             Defaults to False.
 
         phone_number (``str``, *optional*):
@@ -104,7 +104,7 @@ class MotoClient(Methods):
     """
 
     def __init__(self, name: str, api_id: Union[int, str] = None, api_hash: str = None, bot_token: str = None,
-                 session_string: str = None, in_memory: bool = False, phone_number: str = None, phone_code: str = None,
+                 session: str = None, in_memory: bool = False, phone_number: str = None, phone_code: str = None,
                  password: str = None, custom_plugins: dict = None):
 
         super().__init__()
@@ -113,14 +113,14 @@ class MotoClient(Methods):
         self.api_id = int(api_id) if api_id else None
         self.api_hash = api_hash
         self.bot_token = bot_token
-        self.session_string = session_string
+        self.session = session
         self.in_memory = in_memory
         self.phone_number = phone_number
         self.phone_code = phone_code
         self.password = password
         self.plugins = custom_plugins
-        if self.session_string:
-            self.storage = MemoryStorage(self.name, self.session_string)
+        if self.session:
+            self.storage = MemoryStorage(self.name, self.session)
         elif self.in_memory:
             self.storage = MemoryStorage(self.name)
         else:
