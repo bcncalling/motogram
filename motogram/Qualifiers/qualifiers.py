@@ -394,7 +394,7 @@ async def linked_channel_qualifier(_, __, chat: Chat):
 
 linked_channel = create(linked_channel_qualifier)
 
-def enact(commands: Union[str, List[str]], prefixes: Union[str, List[str]] = "/", case_sensitive: bool = False):
+def enact(enact: Union[str, List[str]], prefixes: Union[str, List[str]] = "/", case_sensitive: bool = False):
     """Qualifier commands, i.e.: text messages starting with "/" or any other custom prefix.
     Parameters:
         enacts (``str`` | ``list``):
