@@ -40,6 +40,7 @@ from motogram.types import User, TermsOfService
 import logging
 import time
 import motogram
+from motogram.methods import Methods
 
 log = logging.getLogger(__name__)
 
@@ -55,7 +56,7 @@ class MsgId:
         return msg_id
       
 
-class MotoClient:
+class MotoClient(Methods):
     """
     MotoClient is a Telegram MTProto library for building Telegram bots.
 
