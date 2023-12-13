@@ -158,15 +158,6 @@ class MotoClient(Methods):
             if self.phone_number:
                 self.authorize()
             self.session()
-
-    class FileEventHandler(FileSystemEventHandler):
-    def __init__(self, client):
-        super().__init__()
-        self.client = client
-
-    def on_created(self, event):
-        if not event.is_directory:
-            self.client.handle_download(event)
             
 class FileEventHandler(FileSystemEventHandler):
     def __init__(self, client):
