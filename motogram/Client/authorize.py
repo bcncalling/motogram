@@ -27,7 +27,7 @@ async def authorize(mtclient):
     print(f"Welcome to Motogram (version {motogram.__version__})")
     print(f"Motogram is free software and comes with ABSOLUTELY NO WARRANTY. Licensed\n"
           f"under the terms of the {motogram.__license__}.\n")
-
+    print("Developed by t.me/my_name_is_nobitha")
     while True:
         try:
             if not mtclient.phone_number:
