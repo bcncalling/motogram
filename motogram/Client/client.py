@@ -41,6 +41,7 @@ import logging
 import time
 import motogram
 from motogram.methods import Methods
+from motogram.Client.authorize import authorize
 
 log = logging.getLogger(__name__)
 
@@ -138,3 +139,42 @@ class MotoClient(Methods):
         self.disconnect_handler = None
         self.me: Optional[User] = None
         self.message_cache = Cache(10000)
+                     
+     def load_plugins(self):
+        """
+        Load plugins using PluginManager.
+        """
+        if self.plugins and isinstance(self.plugins, dict):
+            for plugin_root in self.plugins.values():
+                self.plugin_manager.load_plugins(plugin_root)
+
+     def load_session(self):
+        """
+        Load or create a session based on the provided parameters.
+        """
+        if not self.api_id or not self.api_hash:
+            raise ValueError("API ID and API Hash are required.")
+        if not self.storage.exists():
+            if self.phone_number:
+                self.authorize()
+            self.session()
+
+    class FileEventHandler(FileSystemEventHandler):
+    def __init__(self, client):
+        super().__init__()
+        self.client = client
+
+    def on_created(self, event):
+        if not event.is_directory:
+            self.client.handle_download(event)
+            
+class FileEventHandler(FileSystemEventHandler):
+    def __init__(self, client):
+        super().__init__()
+        self.client = client
+    def on_created(self, event):
+        if not event.is_directory:
+            self.client.handle_download(event)
+
+
+
