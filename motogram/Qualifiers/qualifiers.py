@@ -144,6 +144,14 @@ async def app_qualifier(_, __, chat: Chat):
 
 app = create(app_qualifier)
 
+async def dev_qualifier(_, __, chat: types.Chat):
+    """
+    Qualifier function to check if the message is from a user.
+    """
+    return bool(chat.from_user)
+
+dev = create(dev_qualifier)
+
 async def income_qualifier(_, __, chat: Chat):
     return not chat.income
 
