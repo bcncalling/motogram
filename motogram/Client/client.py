@@ -157,7 +157,7 @@ class MotoClient(Methods):
         if not self.storage.exists():
             if self.phone_number:
                 self.authorize()
-            self.session()
+            self.save_session()
             
 class FileEventHandler(FileSystemEventHandler):
     def __init__(self, client):
